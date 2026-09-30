@@ -55,7 +55,7 @@ router.post(
       res.status(201).json({ token, user: { id, email, username } });
     } catch (err) {
       console.error('Register error:', err);
-      res.status(500).json({ error: 'Server error' });
+      res.status(500).json({ error: 'Server error', message: err.message });
     }
   }
 );
@@ -90,7 +90,7 @@ router.post(
       res.json({ token, user: { id: user.id, email: user.email, username: user.username } });
     } catch (err) {
       console.error('Login error:', err);
-      res.status(500).json({ error: 'Server error' });
+      res.status(500).json({ error: 'Server error', message: err.message });
     }
   }
 );
