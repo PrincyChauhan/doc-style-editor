@@ -1,0 +1,6 @@
+# Root-level gitignore
+.DS_Store
+*.log
+
+# Don't commit either node_modules accidentally
+node_modules/
