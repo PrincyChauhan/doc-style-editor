@@ -33,5 +33,8 @@ Thumbs.db
 # Prisma (not used, safety net)
 prisma/
 
-# Test artifacts
-coverage/
+# Build output (frontend dist copied here for production)
+public/*
+!public/.gitkeep
+
+

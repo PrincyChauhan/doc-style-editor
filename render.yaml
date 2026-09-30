@@ -1,0 +1,23 @@
+databases:
+  - name: docstyle-db
+    databaseName: docstyle
+    user: docstyle
+    plan: free
+
+services:
+  - type: web
+    name: docstyle-app
+    plan: free
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && cd ../frontend && npm install && npm run build && cd ../backend && cp -r ../frontend/dist/. ./public
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: docstyle-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
