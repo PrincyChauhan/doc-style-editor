@@ -10,6 +10,6 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        value: postgresql://neondb_owner:npg_CcGlutjsY46T@ep-flat-surf-b4a1mr4x-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=verify-full&channel_binding=require
+        sync: false
       - key: JWT_SECRET
         generateValue: true
