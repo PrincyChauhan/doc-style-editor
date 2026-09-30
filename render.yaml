@@ -1,23 +1,15 @@
-databases:
-  - name: docstyle-db
-    databaseName: docstyle
-    user: docstyle
-    plan: free
-
 services:
   - type: web
     name: docstyle-app
     plan: free
     runtime: node
     rootDir: backend
-    buildCommand: npm install && cd ../frontend && npm install && npm run build && cd ../backend && cp -r ../frontend/dist/. ./public
+    buildCommand: npm install && cd ../frontend && npm install --legacy-peer-deps && npm run build && cd ../backend && mkdir -p public && cp -r ../frontend/dist/. ./public
     startCommand: node src/server.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        fromDatabase:
-          name: docstyle-db
-          property: connectionString
+        value: postgresql://neondb_owner:npg_CcGlutjsY46T@ep-flat-surf-b4a1mr4x-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=verify-full&channel_binding=require
       - key: JWT_SECRET
         generateValue: true
