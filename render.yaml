@@ -4,7 +4,7 @@ services:
     plan: free
     runtime: node
     rootDir: backend
-    buildCommand: npm install && cd ../frontend && npm install --legacy-peer-deps && npm run build && cd ../backend && mkdir -p public && cp -r ../frontend/dist/. ./public
+    buildCommand: npm install && cd ../frontend && npm install --legacy-peer-deps --include=dev && npm run build && cd ../backend && mkdir -p public && cp -r ../frontend/dist/. ./public
     startCommand: node src/server.js
     envVars:
       - key: NODE_ENV
